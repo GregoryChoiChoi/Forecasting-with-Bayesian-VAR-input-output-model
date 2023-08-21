@@ -9,7 +9,7 @@ library(dplyr)
 #a1 <- ts(a1, start = 1995, frequency = 4)  #turn it back to time series for List
 
 #Cubic interpolation:
-y_df <- read.csv("P:\\Gregory\\Economics\\Input-output-BGVAR-model-Greg\\output_at_basic_price.csv")
+y_df <- read.csv("output_at_basic_price.csv")
 func = splinefun(x=y_df$date..output., y=y_df$Agriculture, method="fmm",  ties = mean) # Agri interpolation
 y <- func(seq(1997, 2020, 0.25)) %>% unlist() %>% as.data.frame()
 colnames(y)[colnames(y) == "."] <- "Agriculture" 
@@ -44,7 +44,7 @@ y <- as.matrix(y)
 y <- ts(y, start = 1997, frequency = 4)  #turn it back to time series for List
 
 #Employment
-n_df <- read.csv("P:\\Gregory\\Economics\\Input-output-BGVAR-model-Greg\\Employment.csv")
+n_df <- read.csv("Employment.csv")
 n <- n_df[c(1:93),]
 n <- ts(n, start = 1997, frequency = 4)  #turn it back to time series for List
 
@@ -94,7 +94,7 @@ names(d) <- c("Ag" ,
              "PR" ,
              "Go" ,
              "Ot")
-w <- read.csv("P:\\Gregory\\Economics\\Input-output-BGVAR-model-Greg\\w.csv", header = FALSE)
+w <- read.csv("w.csv", header = FALSE)
 w <- as.matrix(w)
 rownames(w) <- c("Ag" ,
             "Pr",
